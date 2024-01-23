@@ -15,6 +15,15 @@
                 background-repeat: no-repeat;
             }
 
+            nav {
+                background: rgba(20, 60, 50, 0.8);
+            }
+            nav li {
+                margin-right: 2em;
+            }
+            a {
+                --bs-text-opacity: 1;
+            }
             nav li a:hover {
                 font-weight: bold;
                 text-decoration: underline;
@@ -22,14 +31,14 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg" style="background: rgba(20, 60, 50, 0.8)">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-              <a class="navbar-brand text-light" style="--bs-text-opacity: 1;" href="#"><h1 class="d-inline"><i class="bi-airplane"></i></h1><h4 class="d-inline align-bottome"> Travel Bloom</h4></a>
+              <a class="navbar-brand text-light fs-2" href="#"><i class="bi-airplane"></i> Travel Bloom</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="font-size: 1.25em">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                   <li class="nav-item">
                     <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
                   </li>
@@ -40,9 +49,12 @@
                     <a class="nav-link text-light" href="#">Contact Us</a>
                   </li>
                 </ul>
-                <form class="d-flex ms-auto" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-light" type="submit">Search</button>
+                <form class="d-flex" role="search">
+                  <div class="input-group me-2 gap-2">
+                    <input type="search" class="form-control" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="button">Search</button>
+                    <button class="btn btn-outline-light" type="button">Clear</button>
+                  </div>
                 </form>
               </div>
             </div>
