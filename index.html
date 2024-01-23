@@ -13,6 +13,7 @@
                 background-image: url(./assets/bg_home.jpg);
                 background-size: cover;
                 background-repeat: no-repeat;
+                background-attachment: fixed;
             }
 
             nav {
@@ -21,17 +22,18 @@
             nav li {
                 margin-right: 2em;
             }
-            a {
+            a, card button {
                 --bs-text-opacity: 1;
             }
             nav li a:hover {
                 font-weight: bold;
                 text-decoration: underline;
             }
+            
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container-fluid">
               <a class="navbar-brand text-light fs-2" href="#"><i class="bi-airplane"></i> Travel Bloom</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,6 +61,48 @@
               </div>
             </div>
           </nav>
-        <script src="./travel_recommendation.js"></script>
+          
+          <div class="row">
+            <div class="col-lg-1"></div>
+
+            <div class="col-lg-1"></div>
+
+            <div class="col-lg-4 px-5 text-light" ">
+                <div style="top:200px;position:sticky">
+                    <div class="d-inline">
+                    <h1 class="fs-1 fw-bolder">EXPLORE<br/>DREAM<br/>DESTINATION</h1>
+                    <p>It encourages exploration of unfamiliar territories
+                        embracing diverse cultures and landscapes, while pursuing the 
+                        desired destination that captivates the heart and ignites a 
+                        sense of wonder.
+                    </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xs-12 px-4 col-lg-4">
+                <div class="card mt-5">
+                    <img src="./assets/aus_melbourne.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+    
+                <div class="card mt-5">
+                    <img src="./assets/aus_sydney.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+            
+          </div
+
+          <script src="./travel_recommendation.js"></script>
     </body>
 </html>
