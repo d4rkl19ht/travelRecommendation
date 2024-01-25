@@ -203,28 +203,42 @@
             };
 
             let imgPlaces = "";
+            let city = {};
             let countries = {};
             
             let myplaces = JSON.stringify(places);
             myplaces = JSON.parse(myplaces);
             
-            for(key in myplaces){
-                myplaces[key].forEach((place)=>{
-                    if(key=='countries') {
-                        countries = myplaces[key];
-                        countries.forEach((country)=>{
-                            for(let i=0; i < country.cities.length; i++){
-                                imgPlaces = country.cities[i].imageUrl + '\n';
-                            }
-                        })
-                    }
-                        // for(cities in countries) {
-                        //     imgPlaces += city.imageUrl + '\n';
-                        // }
-                    else {
-                        imgPlaces += place.imageUrl + "\n";
-                    }
-                })
+            for(const [key,value] of Object.entries(myplaces)){
+                if(key=="countries") {
+                    value.forEach((country)=>{
+                        for(let i=0; i<country.cities.length; i++){
+                            // imgPlaces += `<img src="./assets/${country.cities[i].imageUrl}"/>`;
+                            imgPlaces += `<div class="card mt-5 shadow">
+                                <img src="./assets/${country.cities[i].imageUrl}" class="card-img-top" alt="${country.cities[i].imageUrl}"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">${country.cities[i].name}</h5>
+                                    <p class="card-text">${country.cities[i].description}</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>`
+                        }                        
+                    })
+                }
+                else
+                {
+                    value.forEach((url)=>{
+                        // imgPlaces += `<img src="./assets/${url.imageUrl}"/>`;
+                        imgPlaces += `<div class="card mt-5 shadow">
+                                <img src="./assets/${url.imageUrl}" class="card-img-top" alt="${url.imageUrl}"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">${url.name}</h5>
+                                    <p class="card-text">${url.description}</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>`
+                    })
+                }
             }
             document.getElementById('search_results').innerHTML = imgPlaces;
           </script>
