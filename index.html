@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()"" >
         <title>Travel Recommendation</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -105,7 +106,7 @@
                     </div>
                 </div>
     
-                <div class="card my-5 shadow">
+                <div class="card my-5 shadow">olivernadela-5500.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai
                     <img src="./assets/aus_sydney.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                     <h5 class="card-title">Card title</h5>
@@ -118,6 +119,114 @@
             
           </div
 
-          <script src="./travel_recommendation.js"></script>
+          <!-- <script src="./travel_recommendation.js"></script> -->
+          <script>
+            let places = {
+                "countries": [
+                {
+                    "id": 1,
+                    "name": "Australia",
+                    "cities": [
+                    {
+                        "name": "Sydney, Australia",
+                        "imageUrl": "aus_sydney.jpg",
+                        "description": "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge."
+                    },
+                    {
+                        "name": "Melbourne, Australia",
+                        "imageUrl": "aus_melbourne.jpg",
+                        "description": "A cultural hub famous for its art, food, and diverse neighborhoods."
+                    }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "Japan",
+                    "cities": [
+                    {
+                        "name": "Tokyo, Japan",
+                        "imageUrl": "japan_tokyo.jpg",
+                        "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture."
+                    },
+                    {
+                        "name": "Kyoto, Japan",
+                        "imageUrl": "japan_kyoto.jpg",
+                        "description": "Known for its historic temples, gardens, and traditional tea houses."
+                    }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "Brazil",
+                    "cities": [
+                    {
+                        "name": "Rio de Janeiro, Brazil",
+                        "imageUrl": "brazil_rio_de_janeiro.jpg",
+                        "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks."
+                    },
+                    {
+                        "name": "São Paulo, Brazil",
+                        "imageUrl": "brazil_sao_paulo.jpg",
+                        "description": "The financial hub with diverse culture, arts, and a vibrant nightlife."
+                    }
+                    ]
+                }
+                ],
+                "temples": [
+                {
+                    "id": 1,
+                    "name": "Angkor Wat, Cambodia",
+                    "imageUrl": "temples_angkor_wat.jpg",
+                    "description": "A UNESCO World Heritage site and the largest religious monument in the world."
+                },
+                {
+                    "id": 2,
+                    "name": "Taj Mahal, India",
+                    "imageUrl": "temples_taj-mahal.jpg",
+                    "description": "An iconic symbol of love and a masterpiece of Mughal architecture."
+                }
+                ],
+                "beaches": [
+                {
+                    "id": 1,
+                    "name": "Bora Bora, French Polynesia",
+                    "imageUrl": "beaches_bora_bora.jpg",
+                    "description": "An island known for its stunning turquoise waters and luxurious overwater bungalows."
+                },
+                {
+                    "id": 2,
+                    "name": "Copacabana Beach, Brazil",
+                    "imageUrl": "beaches_copacobana.jpg",
+                    "description": "A famous beach in Rio de Janeiro, Brazil, with a vibrant atmosphere and scenic views."
+                }
+                ]
+            };
+
+            let imgPlaces = "";
+            let countries = {};
+            
+            let myplaces = JSON.stringify(places);
+            myplaces = JSON.parse(myplaces);
+            
+            for(key in myplaces){
+                myplaces[key].forEach((place)=>{
+                    if(key=='countries') {
+                        countries = myplaces[key];
+                        countries.forEach((country)=>{
+                            for(let i=0; i < country.cities.length; i++){
+                                imgPlaces = country.cities[i].imageUrl + '\n';
+                            }
+                        })
+                    }
+                        // for(cities in countries) {
+                        //     imgPlaces += city.imageUrl + '\n';
+                        // }
+                    else {
+                        imgPlaces += place.imageUrl + "\n";
+                    }
+                })
+            }
+            document.getElementById('search_results').innerHTML = imgPlaces;
+          </script>
     </body>
 </html>
