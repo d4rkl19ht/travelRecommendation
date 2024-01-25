@@ -34,7 +34,8 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg sticky-top">
+        <!-- <nav class="navbar navbar-expand-lg sticky-top"> -->
+            <nav class="navbar navbar-expand-lg w-100 z-3" style="position:fixed" >
             <div class="container-fluid">
               <a class="navbar-brand text-light fs-2" href="#"><i class="bi-airplane"></i> Travel Bloom</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +56,7 @@
                 <form class="d-flex" role="search">
                   <div class="input-group me-2 gap-2">
                     <input type="search" class="form-control" id="searchbox" name="searchbox" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light" type="button" id="btnSearch" name="btnSearch">Search</button>
+                    <button class="btn btn-outline-light" type="button" id="btnSearch" name="btnSearch" onclick="Search()">Search</button>
                     <button class="btn btn-outline-light" type="button" id="btnClear" name="btnClear">Clear</button>
                   </div>
                 </form>
@@ -97,150 +98,147 @@
             </div>
             
             <div id="search_results" name="search_results" class="col-xs-12 px-4 col-lg-4" style="background: rgba(50, 50, 50, 0.5)">
-                <!-- <div class="card mt-5 shadow">
-                    <img src="./assets/aus_melbourne.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-    
-                <div class="card my-5 shadow">olivernadela-5500.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai
-                    <img src="./assets/aus_sydney.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div> -->
             </div>
             <div class="col"></div>
             
           </div
 
           <!-- <script src="./travel_recommendation.js"></script> -->
-          <script>
-            let places = {
-                "countries": [
+          
+    </body>
+    <script>
+        let places = {
+            "countries": [
+            {
+                "id": 1,
+                "name": "Australia",
+                "cities": [
                 {
-                    "id": 1,
-                    "name": "Australia",
-                    "cities": [
-                    {
-                        "name": "Sydney, Australia",
-                        "imageUrl": "aus_sydney.jpg",
-                        "description": "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge."
-                    },
-                    {
-                        "name": "Melbourne, Australia",
-                        "imageUrl": "aus_melbourne.jpg",
-                        "description": "A cultural hub famous for its art, food, and diverse neighborhoods."
-                    }
-                    ]
+                    "name": "Sydney, Australia",
+                    "imageUrl": "aus_sydney.jpg",
+                    "description": "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge."
                 },
                 {
-                    "id": 2,
-                    "name": "Japan",
-                    "cities": [
-                    {
-                        "name": "Tokyo, Japan",
-                        "imageUrl": "japan_tokyo.jpg",
-                        "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture."
-                    },
-                    {
-                        "name": "Kyoto, Japan",
-                        "imageUrl": "japan_kyoto.jpg",
-                        "description": "Known for its historic temples, gardens, and traditional tea houses."
-                    }
-                    ]
-                },
-                {
-                    "id": 3,
-                    "name": "Brazil",
-                    "cities": [
-                    {
-                        "name": "Rio de Janeiro, Brazil",
-                        "imageUrl": "brazil_rio_de_janeiro.jpg",
-                        "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks."
-                    },
-                    {
-                        "name": "São Paulo, Brazil",
-                        "imageUrl": "brazil_sao_paulo.jpg",
-                        "description": "The financial hub with diverse culture, arts, and a vibrant nightlife."
-                    }
-                    ]
-                }
-                ],
-                "temples": [
-                {
-                    "id": 1,
-                    "name": "Angkor Wat, Cambodia",
-                    "imageUrl": "temples_angkor_wat.jpg",
-                    "description": "A UNESCO World Heritage site and the largest religious monument in the world."
-                },
-                {
-                    "id": 2,
-                    "name": "Taj Mahal, India",
-                    "imageUrl": "temples_taj-mahal.jpg",
-                    "description": "An iconic symbol of love and a masterpiece of Mughal architecture."
-                }
-                ],
-                "beaches": [
-                {
-                    "id": 1,
-                    "name": "Bora Bora, French Polynesia",
-                    "imageUrl": "beaches_bora_bora.jpg",
-                    "description": "An island known for its stunning turquoise waters and luxurious overwater bungalows."
-                },
-                {
-                    "id": 2,
-                    "name": "Copacabana Beach, Brazil",
-                    "imageUrl": "beaches_copacobana.jpg",
-                    "description": "A famous beach in Rio de Janeiro, Brazil, with a vibrant atmosphere and scenic views."
+                    "name": "Melbourne, Australia",
+                    "imageUrl": "aus_melbourne.jpg",
+                    "description": "A cultural hub famous for its art, food, and diverse neighborhoods."
                 }
                 ]
-            };
-
-            let imgPlaces = "";
-            let city = {};
-            let countries = {};
-            
-            let myplaces = JSON.stringify(places);
-            myplaces = JSON.parse(myplaces);
-            
-            for(const [key,value] of Object.entries(myplaces)){
-                if(key=="countries") {
-                    value.forEach((country)=>{
-                        for(let i=0; i<country.cities.length; i++){
-                            // imgPlaces += `<img src="./assets/${country.cities[i].imageUrl}"/>`;
-                            imgPlaces += `<div class="card mt-5 shadow">
-                                <img src="./assets/${country.cities[i].imageUrl}" class="card-img-top" alt="${country.cities[i].imageUrl}"/>
-                                <div class="card-body">
-                                    <h5 class="card-title">${country.cities[i].name}</h5>
-                                    <p class="card-text">${country.cities[i].description}</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>`
-                        }                        
-                    })
-                }
-                else
+            },
+            {
+                "id": 2,
+                "name": "Japan",
+                "cities": [
                 {
-                    value.forEach((url)=>{
-                        // imgPlaces += `<img src="./assets/${url.imageUrl}"/>`;
-                        imgPlaces += `<div class="card mt-5 shadow">
-                                <img src="./assets/${url.imageUrl}" class="card-img-top" alt="${url.imageUrl}"/>
-                                <div class="card-body">
-                                    <h5 class="card-title">${url.name}</h5>
-                                    <p class="card-text">${url.description}</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>`
-                    })
+                    "name": "Tokyo, Japan",
+                    "imageUrl": "japan_tokyo.jpg",
+                    "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture."
+                },
+                {
+                    "name": "Kyoto, Japan",
+                    "imageUrl": "japan_kyoto.jpg",
+                    "description": "Known for its historic temples, gardens, and traditional tea houses."
                 }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Brazil",
+                "cities": [
+                {
+                    "name": "Rio de Janeiro, Brazil",
+                    "imageUrl": "brazil_rio_de_janeiro.jpg",
+                    "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks."
+                },
+                {
+                    "name": "São Paulo, Brazil",
+                    "imageUrl": "brazil_sao_paulo.jpg",
+                    "description": "The financial hub with diverse culture, arts, and a vibrant nightlife."
+                }
+                ]
             }
-            document.getElementById('search_results').innerHTML = imgPlaces;
-          </script>
-    </body>
+            ],
+            "temples": [
+            {
+                "id": 1,
+                "name": "Angkor Wat, Cambodia",
+                "imageUrl": "temples_angkor_wat.jpg",
+                "description": "A UNESCO World Heritage site and the largest religious monument in the world."
+            },
+            {
+                "id": 2,
+                "name": "Taj Mahal, India",
+                "imageUrl": "temples_taj.jpg",
+                "description": "An iconic symbol of love and a masterpiece of Mughal architecture."
+            }
+            ],
+            "beaches": [
+            {
+                "id": 1,
+                "name": "Bora Bora, French Polynesia",
+                "imageUrl": "beaches_bora_bora.jpg",
+                "description": "An island known for its stunning turquoise waters and luxurious overwater bungalows."
+            },
+            {
+                "id": 2,
+                "name": "Copacabana Beach, Brazil",
+                "imageUrl": "beaches_copacobana.jpg",
+                "description": "A famous beach in Rio de Janeiro, Brazil, with a vibrant atmosphere and scenic views."
+            }
+            ]
+        };
+
+
+        const btnSearch = document.getElementById('btnSearch');
+        const txtSearch = document.getElementById('searchbox');
+
+        function Search(){
+            alert(txtSearch.value.trim());
+            if(txtSearch.value.trim()){
+                alert("searching...");
+            }
+        }
+
+        let imgPlaces = "";
+        let city = {};
+        let countries = {};
+        
+        let myplaces = JSON.stringify(places);
+        myplaces = JSON.parse(myplaces);
+        
+        for(const [key,value] of Object.entries(myplaces)){
+            if(key=="countries") {
+                value.forEach((country)=>{
+                    for(let i=0; i<country.cities.length; i++){
+                        // imgPlaces += `<img src="./assets/${country.cities[i].imageUrl}"/>`;
+                        imgPlaces += `<div class="card mt-5 shadow">
+                            <img src="./assets/${country.cities[i].imageUrl}" class="card-img-top" alt="${country.cities[i].imageUrl}"/>
+                            <div class="card-body">
+                                <h5 class="card-title">${country.cities[i].name}</h5>
+                                <p class="card-text">${country.cities[i].description}</p>
+                                <a href="#" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>`
+                    }
+                })
+            }
+            else
+            {
+                value.forEach((url)=>{
+                    // imgPlaces += `<img src="./assets/${url.imageUrl}"/>`;
+                    imgPlaces += `<div class="card mt-5 shadow">
+                            <img src="./assets/${url.imageUrl}" class="card-img-top" alt="${url.imageUrl}"/>
+                            <div class="card-body">
+                                <h5 class="card-title">${url.name}</h5>
+                                <p class="card-text">${url.description}</p>
+                                <a href="#" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>`
+                })
+            }
+        }
+
+        document.getElementById('search_results').innerHTML = imgPlaces;
+
+      </script>
 </html>
