@@ -53,9 +53,9 @@
                 </ul>
                 <form class="d-flex" role="search">
                   <div class="input-group me-2 gap-2">
-                    <input type="search" class="form-control" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light" type="button">Search</button>
-                    <button class="btn btn-outline-light" type="button">Clear</button>
+                    <input type="search" class="form-control" id="searchbox" name="searchbox" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="button" id="btnSearch" name="btnSearch">Search</button>
+                    <button class="btn btn-outline-light" type="button" id="btnClear" name="btnClear">Clear</button>
                   </div>
                 </form>
               </div>
@@ -63,12 +63,38 @@
           </nav>
           
           <div class="row">
-            <div class="col-lg-1"></div>
-
+            <div class="col-lg-1">
+                <div style="top:calc(100%/2);position:sticky">
+                    <div class="d-flex flex-xs-row justify-content-evenly flex-lg-column ms-lg-5 text-light fs-1">
+                        <i class="bi-twitter"></i>
+                        <i class="bi-facebook"></i>
+                        <i class="bi-instagram"></i>
+                        <i class="bi-youtube"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-1 bg-success">
+                <div class="d-none d-lg-block">
+                <div class="d-flex flex-column fs-1 align-items-center text-light">
+                    <i class="col bi-twitter"></i>
+                    <i class="col bi-facebook"></i>
+                    <i class="bi-instagram"></i>
+                    <i class="bi-youtube"></i>
+                </div>
+                </div>  
+                <div class="d-lg-none">
+                <div class="d-flex flex-row fs-1 justify-content-evenly text-light">
+                    <i class="bi-twitter"></i>
+                    <i class="bi-facebook"></i>
+                    <i class="bi-instagram"></i>
+                    <i class="bi-youtube"></i>
+                </div>
+                </div>
+            </div> -->
             <div class="col-lg-1"></div>
 
             <div class="col-lg-4 px-5 text-light" ">
-                <div style="top:200px;position:sticky">
+                <div style="top:calc(100%/3);position:sticky">
                     <div class="d-inline">
                     <h1 class="fs-1 fw-bolder">EXPLORE<br/>DREAM<br/>DESTINATION</h1>
                     <p>It encourages exploration of unfamiliar territories
