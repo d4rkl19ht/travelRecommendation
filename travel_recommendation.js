@@ -127,7 +127,7 @@ function card_result(obj) {
         <div class="card-body">
             <h5 class="card-title">${obj.name}</h5>
             <p class="card-text">${obj.description}</p>
-            <a href="#" class="btn btn-primary">Book Now</a>
+            <a href="#" class="btn btn-success fw-bolder">BOOK NOW</a>
         </div>
     </div>`;
 }
