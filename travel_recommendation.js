@@ -34,18 +34,20 @@ xhr.onload = () => {
   }, 500);
   
   let places_length = places.length;
+  console.log('places length:', places.length);
   let place_index = 1;
 
   slideshow = setInterval(() => {
     cardslideshow.style.opacity = 0;
-    if (place_index == places_length) place_index = 0;
-
+    console.log(place_index);
     setTimeout(() => {
         cardslideshow.innerHTML = card_result(places[place_index]);
-        cardslideshow.style.opacity = 1;    
+        setTimeout(() => {
+            cardslideshow.style.opacity = 1;    
+        }, 500);
     }, 500);
-    
-    place_index += 1;
+    place_index++;
+    if(place_index == places.length) place_index = 0;
   }, 5000);
 };
 
