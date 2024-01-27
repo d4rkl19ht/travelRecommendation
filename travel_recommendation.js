@@ -1,105 +1,131 @@
 let xhr = new XMLHttpRequest();
-xhr.open('GET', './travel_recommendation_api.json');
+xhr.open("GET", "./travel_recommendation_api.json");
 xhr.responseType = "json";
 let places = [];
 let slideshow = "";
 
+let countries = "";
+let beaches = "";
+let temples = "";
+
 xhr.onload = () => {
+  countries = xhr.response.countries;
+  beaches = xhr.response.beaches;
+  temples = xhr.response.temples;
 
-  let countries = xhr.response.countries;
-  let beaches = xhr.response.beaches;
-  let temples = xhr.response.temples;
-  let div_results = document.getElementById("div_results");
-
-    countries.forEach(country=>{
-        country.cities.forEach(city=>{
-            places.push(city);
-        });
+  countries.forEach((country) => {
+    country.cities.forEach((city) => {
+      places.push(city);
     });
+  });
 
-    beaches.forEach(beach=>{
-        places.push(beach);
-    })
+  beaches.forEach((beach) => {
+    places.push(beach);
+  });
 
-    temples.forEach(temple=>{
-        places.push(temple);
-    })
+  temples.forEach((temple) => {
+    places.push(temple);
+  });
 
-    div_results.innerHTML = card_result(places[0]);
+  let cardslideshow = document.getElementById('cardslideshow');
+  cardslideshow.innerHTML = card_result(places[0]);
+  setTimeout(() => {
+    cardslideshow.style.opacity = 1;
+  }, 500);
+  
+  let places_length = places.length;
+  let place_index = 1;
 
-    let places_length = places.length;
-    let place_index = 1;
+  slideshow = setInterval(() => {
+    cardslideshow.style.opacity = 0;
+    if (place_index == places_length) place_index = 0;
 
-    slideshow = setInterval(()=>{
-        if(place_index == places_length) place_index = 0;
-        div_results.innerHTML = card_result(places[place_index]);
-        place_index += 1;
-    },5000)
+    setTimeout(() => {
+        cardslideshow.innerHTML = card_result(places[place_index]);
+        cardslideshow.style.opacity = 1;    
+    }, 500);
+    
+    place_index += 1;
+  }, 5000);
 };
 
 xhr.send();
 
-const txtSearch = document.getElementById('txtSearch');
-const btnSearch = document.getElementById('btnSearch');
-const btnClear = document.getElementById('btnClear');
+const txtSearch = document.getElementById("txtSearch");
+const btnSearch = document.getElementById("btnSearch");
+const btnClear = document.getElementById("btnClear");
 
-btnSearch.addEventListener('click',()=>{
-    search_place(txtSearch.value);
+btnSearch.addEventListener("click", () => {
+  search_place(txtSearch.value);
 });
 
-btnClear.addEventListener('click',()=>{
-    txtSearch.value="";
-    txtSearch.focus();
+btnClear.addEventListener("click", () => {
+  txtSearch.value = "";
+  txtSearch.focus();
 });
 
 function search_place(place) {
-    clearInterval(slideshow);
-    let xhr = new XMLHttpRequest();
-    const url = './travel_recommendation_api.json';
-    let results = "";
-        
-    xhr.open('GET', url, true);
-    xhr.responseType = 'json';
-    xhr.onload = ()=> {
-        let countries = xhr.response.countries;
-        let temples = xhr.response.temples;
-        let beaches = xhr.response.beaches;
-
-        countries.forEach(country=>{
-            let cities = country.cities;
-            cities.forEach(city=>{
-                if(city.name.toLowerCase().includes(place.toLowerCase())){
-                    results += card_result(city);
-                }
-            })
+  places=[];
+  clearInterval(slideshow);
+  
+  if(place.toLowerCase().includes('countr')){
+    countries.forEach((country) => {
+        country.cities.forEach((city) => {
+          places.push(city);
         });
-
-        temples.forEach(temple=>{
-            if(temple.name.toLowerCase().includes(place.toLowerCase())){
-                results += card_result(temple);
-            }
+    });
+  } else {
+    countries.forEach((country) => {
+        country.cities.forEach((city) => {
+            if(city.name.toLowerCase().includes(place.toLowerCase())){
+                places.push(city);
+            };
         });
+    });
+  };
 
-        beaches.forEach(beach => {
-            if(beach.name.toLowerCase().includes(place.toLowerCase())){
-                results += card_result(beach);
-                }
-        });
+  if(place.toLowerCase().includes('beach')){
+    beaches.forEach((beach) => {
+        places.push(beach);
+    });
+  }else {
+    beaches.forEach((beach) => {
+        if(beach.name.toLowerCase().includes(place.toLowerCase())){
+            places.push(beach);
+        }
+    });
+  };
 
-        div_results = document.getElementById('div_results');
-        div_results.innerHTML = results;
-    }
+  if(place.toLowerCase().includes('temple')){
+    temples.forEach(temple=>{
+        places.push(temple);
+    });
+  }else {
+    temples.forEach(temple=>{
+        if(temple.name.toLowerCase().includes(place.toLowerCase())){
+            places.push(temple);
+        };
+    });
+  };
+  
+  let searchresults = "";
+  cardslideshow.style.opacity = 0;
+  setTimeout(() => {
+    places.forEach(place=>{
+        searchresults += card_result(place);
+    })
+    cardslideshow.innerHTML = searchresults;
+    cardslideshow.style.opacity = 1;    
+  }, 500);
+};
 
-    xhr.send();
-}
-
-function card_result(obj){
-    return `<div class="card mb-5 w-100">
+function card_result(obj) {
+  return `<div class="card mb-5 w-100">
         <img src="./assets/${obj.imageUrl}" class="card-img-top" alt="${obj.imageUrl}">
         <div class="card-body">
             <h5 class="card-title">${obj.name}</h5>
             <p class="card-text">${obj.description}</p>
             <a href="#" class="btn btn-primary">Book Now</a>
         </div>
-    </div>`
+    </div>`;
 }
