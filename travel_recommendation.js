@@ -102,7 +102,6 @@ function search_place(place) {
   };
   
   let searchresults = "";
-  cardslideshow.style.opacity = 0;
   setTimeout(() => {
     places.forEach(place=>{
         searchresults += card_result_static(place);
@@ -110,6 +109,8 @@ function search_place(place) {
     cardslideshow.innerHTML = searchresults;
     cardslideshow.style.opacity = 1;    
   }, 500);
+
+  document.getElementById('navbar-toggler').click;
 };
 
 function card_result_static(obj) {

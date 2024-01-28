@@ -112,16 +112,16 @@
                 </div>
                 <div class="col col-auto"></div>
             </div>
-            <div class="row">
+            <div class="row mx-auto">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-1"></div>
-                <div class="col-lg-9 ms-5">
+                <div class="col-lg-9">
                     <div class="card text-center" style="background: rgba(0, 0, 0, 0); border: none;">
                         <div class="card-body">
                         <h5 class="card-title text-light" style="font-size: 55px; font-weight: bold; text-align: left;">Our Team</h5>
                         </div>
                     </div>
-                    <div class="row d-flex flex-xs-column" id="div_team_members">
+                    <div class="row" id="div_team_members">
                     </div>
                 </div>
                 <div class="col-lg-auto"></div>
@@ -131,19 +131,17 @@
     </body>
     <script>
         const team_members = [
-            {"name": "Oliver Nadela", "jd":"Oliver is responsible for...", "title":"Father"},
-            {"name": "Jane Nadela", "jd":"Jane is responsible for...", "title":"Mother"},
-            {"name": "Jana Aerith Nadela", "jd":"Jana Aerith is responsible for...", "title":"Sis"},
-            {"name": "Paul Iver Nadela", "jd":"Paul Iver is responsible for...", "title":"Bro"}
+            {"name": "Oliver Nadela", "jd":"Oliver is responsible for...", "title":"Father", "imgUrl":"oliver.jpg"},
+            {"name": "Jane Nadela", "jd":"Jane is responsible for...", "title":"Mother", "imgUrl":"jingkay.jpg"},
+            {"name": "Jana Aerith Nadela", "jd":"Jana Aerith is responsible for...", "title":"Sis", "imgUrl":"janaaerith.jpg"},
+            {"name": "Paul Iver Nadela", "jd":"Paul Iver is responsible for...", "title":"Bro", "imgUrl":"pauliver.jpg"}
         ];
 
         function team_member_card(member){
                 return `
                 <div class="d-none d-xl-block w-25">
-                    <div class="card text-center text-light mb-4 pb-4 px-2" style="background: rgba(10, 10, 10, 0.5);">
-                        <div class="card-header">
-                            <i class="bi-person-square fs-4"></i>
-                        </div>
+                    <div class="card text-center text-light mb-4 pb-4 px-2 pt-2" style="background: rgba(10, 10, 10, 0.5);">
+                        <img src="./assets/${member.imgUrl}" class="card-img-top"/>
                         <div class="card-body">
                             <h5 class="card-title fw-bolder">${member.name}</h5>
                             <p class="card-text">${member.jd}</p>
@@ -154,10 +152,8 @@
                     </div>
                 </div>
                 <div class="d-none d-xl-none d-md-block w-50">
-                    <div class="card text-center text-light mb-4 pb-4 px-2" style="background: rgba(10, 10, 10, 0.5);">
-                        <div class="card-header">
-                            <i class="bi-person-square fs-4"></i>
-                        </div>
+                    <div class="card text-center text-light mb-4 pb-4 px-2 pt-2" style="background: rgba(10, 10, 10, 0.5);">
+                        <img src="./assets/${member.imgUrl}" class="card-img-top"/>
                         <div class="card-body">
                             <h5 class="card-title fw-bolder">${member.name}</h5>
                             <p class="card-text">${member.jd}</p>
@@ -168,10 +164,8 @@
                     </div>
                 </div>
                 <div class="d-md-none w-100">
-                    <div class="card text-center text-light mb-4 pb-4 px-2" style="background: rgba(10, 10, 10, 0.5);">
-                        <div class="card-header">
-                            <i class="bi-person-square fs-4"></i>
-                        </div>
+                    <div class="card text-center text-light mb-4 pb-4 px-2 pt-2" style="background: rgba(10, 10, 10, 0.5);">
+                        <img src="./assets/${member.imgUrl}" class="card-img-top"/>
                         <div class="card-body">
                             <h5 class="card-title fw-bolder">${member.name}</h5>
                             <p class="card-text">${member.jd}</p>
