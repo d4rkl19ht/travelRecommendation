@@ -62,13 +62,13 @@
                     <a class="nav-link text-light" href="contact_us.html">Contact Us</a>
                 </li>
                 </ul>
-                <form class="d-flex" role="search">
+                <!-- <form class="d-flex" role="search">
                 <div class="input-group me-2 gap-2">
                     <input type="search" class="form-control" id="txtSearch" name="txtSearch" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-light" type="button" id="btnSearch" name="btnSearch">Search</button>
                     <button class="btn btn-outline-light" type="button" id="btnClear" name="btnClear">Clear</button>
                 </div>
-                </form>
+                </form> -->
             </div>
             </div>
         </nav>
@@ -93,82 +93,102 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-8 px-5 text-light mb-4">
-                <div style="top: calc(100%/7); position:sticky">
-                    <div class="d-inline">
-                        <h1 class="d-none d-lg-block" style="font-size: 80px; font-weight: bolder;">ABOUT US</h1>
-                        <h1 class="d-block d-lg-none" style="font-size: 80px; font-weight: bolder;">ABOUT US</h1>
-                        <p class="mt-2 w-100">Welcome to Our Company! We are a team of passionate individuals dedicated to providing excellent
-                            services/products to our customers. Our mission is to <span class="fw-bolder">provide the best experience</span>
-                            for people travelling to different destinations around the world.
-                            Our values include integrity, innovation, customer satisfaction,
-                            and teamwork. We believe in <span class="fw-bolder">putting
+            <div class="row mt-5">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8 px-5 text-light mb-4">
+                    <h1 class="d-none d-lg-block mt-5" style="font-size: 80px; font-weight: bolder;">ABOUT US</h1>
+                    <h1 class="d-block d-lg-none" style="font-size: 80px; font-weight: bolder;">ABOUT US</h1>
+                    <p class="mt-2 w-100">Welcome to Our Company! We are a team of passionate individuals dedicated to providing excellent
+                                services/products to our customers. Our mission is to <span class="fw-bolder">provide the best experience</span>
+                                for people travelling to different destinations around the world.
+                                Our values include integrity, innovation, customer satisfaction,
+                                and teamwork. We believe in <span class="fw-bolder">putting
                                 our customers first</span> and <span class="fw-bolder">working together</span>
                                 to achieve our goals.
-                            </span>
-                        </p>
-                        <p>Feel free to explore our website to learn more about what we offer.</p>
-                    </div>
-                    <div class="row my-5 pt-5 d-flex flex-xs-column">
-                        <div class="col-xl-4 card text-center" style="background: rgba(0, 0, 0, 0); border: none;">
-                            <div class="card-body">
-                              <h5 class="card-title text-light" style="font-size: 55px; font-weight: bold; text-align: left;">Our<br/>Team</h5>
-                            </div>
+                                </span>
+                    </p>
+                    <p>Feel free to explore our website to learn more about what we offer.</p>
+                </div>
+                <div class="col col-auto"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-9 ms-5">
+                    <div class="card text-center" style="background: rgba(0, 0, 0, 0); border: none;">
+                        <div class="card-body">
+                        <h5 class="card-title text-light" style="font-size: 55px; font-weight: bold; text-align: left;">Our Team</h5>
                         </div>
-                        <div class="col-auto">
-                            <div class="row">
-                            <div class="col-xl-auto mb-2">
-                                <div class="card text-center text-light" style="background: rgba(10, 10, 10, 0.5);">
-                                    <div class="card-header">
-                                    <i class="bi-person-square fs-4"></i>
-                                    </div>
-                                    <div class="card-body">
-                                    <h5 class="card-title fw-bolder">John Doe</h5>
-                                    <p class="card-text">John is responsible for...</p>
-                                    </div>
-                                    <div class="card-footer fw-bolder" style="background: rgba(68, 68, 209, 1);">
-                                    CEO
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="row d-flex flex-xs-column" id="div_team_members">
+                    </div>
+                </div>
+                <div class="col-lg-auto"></div>
+            </div>
+            
+        </div>
+    </body>
+    <script>
+        const team_members = [
+            {"name": "Oliver Nadela", "jd":"Oliver is responsible for...", "title":"Father"},
+            {"name": "Jane Nadela", "jd":"Jane is responsible for...", "title":"Mother"},
+            {"name": "Jana Aerith Nadela", "jd":"Jana Aerith is responsible for...", "title":"Sis"},
+            {"name": "Paul Iver Nadela", "jd":"Paul Iver is responsible for...", "title":"Bro"}
+        ];
 
-                            <div class="col-xl-auto mb-2">
-                                <div class="card text-center text-light" style="background: rgba(10, 10, 10, 0.5);">
-                                    <div class="card-header">
-                                    <i class="bi-person-square fs-4"></i>
-                                    </div>
-                                    <div class="card-body">
-                                    <h5 class="card-title fw-bolder">Celina Thomas</h5>
-                                    <p class="card-text">Celina is responsible for...</p>
-                                    </div>
-                                    <div class="card-footer fw-bolder" style="background: rgba(68, 68, 209, 1);">
-                                    Team Lead
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-auto mb-2">
-                                <div class="card text-center text-light" style="background: rgba(10, 10, 10, 0.5);">
-                                    <div class="card-header">
-                                    <i class="bi-person-square fs-4"></i>
-                                    </div>
-                                    <div class="card-body">
-                                    <h5 class="card-title fw-bolder">Mike Tysen</h5>
-                                    <p class="card-text">Mike is responsible for...</p>
-                                    </div>
-                                    <div class="card-footer fw-bolder" style="background: rgba(68, 68, 209, 1);">
-                                    Delivery Head
-                                    </div>
-                                </div>
-                            </div>
-                           </div>
+        function team_member_card(member){
+                return `
+                <div class="d-none d-xl-block w-25">
+                    <div class="card text-center text-light mb-4 pb-4 px-2" style="background: rgba(10, 10, 10, 0.5);">
+                        <div class="card-header">
+                            <i class="bi-person-square fs-4"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">${member.name}</h5>
+                            <p class="card-text">${member.jd}</p>
+                        </div>
+                        <div class="card-footer fw-bolder" style="background: rgba(68, 68, 209, 1);">
+                            ${member.title}
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col col-auto"></div>
-        </div>
-    </body>
-    <!-- <script src="./travel_recommendation.js"></script> -->
+                <div class="d-none d-xl-none d-md-block w-50">
+                    <div class="card text-center text-light mb-4 pb-4 px-2" style="background: rgba(10, 10, 10, 0.5);">
+                        <div class="card-header">
+                            <i class="bi-person-square fs-4"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">${member.name}</h5>
+                            <p class="card-text">${member.jd}</p>
+                        </div>
+                        <div class="card-footer fw-bolder" style="background: rgba(68, 68, 209, 1);">
+                            ${member.title}
+                        </div>
+                    </div>
+                </div>
+                <div class="d-md-none w-100">
+                    <div class="card text-center text-light mb-4 pb-4 px-2" style="background: rgba(10, 10, 10, 0.5);">
+                        <div class="card-header">
+                            <i class="bi-person-square fs-4"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">${member.name}</h5>
+                            <p class="card-text">${member.jd}</p>
+                        </div>
+                        <div class="card-footer fw-bolder" style="background: rgba(68, 68, 209, 1);">
+                            ${member.title}
+                        </div>
+                    </div>
+                </div>`
+        }
+
+        const div_team_members = document.getElementById('div_team_members');
+        let str_team_members = "";
+        team_members.forEach(member => {
+            str_team_members += team_member_card(member);
+        });
+
+        div_team_members.innerHTML = str_team_members;
+    </script>
 </html>

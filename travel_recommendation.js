@@ -2,7 +2,7 @@ let xhr = new XMLHttpRequest();
 xhr.open("GET", "./travel_recommendation_api.json");
 xhr.responseType = "json";
 let places = [];
-let slideshow = "";
+let slideshow_interval = "";
 
 let countries = "";
 let beaches = "";
@@ -28,29 +28,20 @@ xhr.onload = () => {
   });
 
   let cardslideshow = document.getElementById('cardslideshow');
-  cardslideshow.innerHTML = card_result(places[0]);
-  setTimeout(() => {
-    cardslideshow.style.opacity = 1;
-  }, 500);
-  
-  let places_length = places.length;
-  console.log('places length:', places.length);
-  let place_index = 1;
 
-  slideshow = setInterval(() => {
-    cardslideshow.style.opacity = 0;
-    console.log(place_index);
-    setTimeout(() => {
-        cardslideshow.innerHTML = card_result(places[place_index]);
-        setTimeout(() => {
-            cardslideshow.style.opacity = 1;    
-        }, 500);
-    }, 500);
-    place_index++;
-    if(place_index == places.length) place_index = 0;
-  }, 5000);
-};
+  cardslideshow.innerHTML = card_result(places);
+  document.getElementById(`card_img_0`).style.opacity = 1;
 
+  let i = 1;
+  slideshow_interval = setInterval(()=>{
+    if(i > 0) document.getElementById(`card_img_${i-1}`).style.opacity = 0;
+    else document.getElementById(`card_img_${places.length-1}`).style.opacity = 0;
+
+    document.getElementById(`card_img_${i}`).style.opacity = 1;
+    i++;
+    if(i==places.length) i=0;
+  },5000)
+}
 xhr.send();
 
 const txtSearch = document.getElementById("txtSearch");
@@ -68,7 +59,7 @@ btnClear.addEventListener("click", () => {
 
 function search_place(place) {
   places=[];
-  clearInterval(slideshow);
+  clearInterval(slideshow_interval);
   
   if(place.toLowerCase().includes('countr')){
     countries.forEach((country) => {
@@ -114,14 +105,14 @@ function search_place(place) {
   cardslideshow.style.opacity = 0;
   setTimeout(() => {
     places.forEach(place=>{
-        searchresults += card_result(place);
+        searchresults += card_result_static(place);
     })
     cardslideshow.innerHTML = searchresults;
     cardslideshow.style.opacity = 1;    
   }, 500);
 };
 
-function card_result(obj) {
+function card_result_static(obj) {
   return `<div class="card mb-5 w-100">
         <img src="./assets/${obj.imageUrl}" class="card-img-top" alt="${obj.imageUrl}">
         <div class="card-body">
@@ -130,4 +121,20 @@ function card_result(obj) {
             <a href="#" class="btn btn-success fw-bolder">BOOK NOW</a>
         </div>
     </div>`;
+}
+
+function card_result(places) {
+  let str_images = "";
+  for(let i=0; i < places.length; i++) {
+    str_images += 
+   `<div class="card cardslideshow mb-5 w-100 position-absolute top-0 start-0" style="opacity:0" id="card_img_${i}">
+        <img src="./assets/${places[i].imageUrl}" class="card-img-top" alt="${places[i].imageUrl}">
+        <div class="card-body">
+            <h5 class="card-title">${places[i].name}</h5>
+            <p class="card-text">${places[i].description}</p>
+            <a href="#" class="btn btn-success fw-bolder">BOOK NOW</a>
+        </div>
+    </div>`;
+  };
+  return str_images;
 }
