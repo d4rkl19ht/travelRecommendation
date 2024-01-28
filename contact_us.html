@@ -30,18 +30,34 @@
                 font-weight: bold;
                 text-decoration: underline;
             }
-            #cardslideshow{
-                -webkit-transition: opacity .5s ease-in-out;
-                -moz-transition: opacity .5s ease-in-out;
-                -ms-transition: opacity .5s ease-in-out;
-                -o-transition: opacity .5s ease-in-out;
-                transition: opacity .5s ease-in-out;
-            }
             .bi-airplane{
                 transform: rotate(30deg);
                 display: inline-block;
                 font-size: 35px;
             }
+
+            .contact_us_form {
+                border-radius: 10px;
+                border-color: white;
+                color:white;
+                padding: 1.5em;
+                background: rgba(50, 50, 50, 0.4);
+            }
+
+            .contact_us_form input {
+                color: white;
+                background: rgba(50, 50, 50, 0);
+                display: block;
+                width: 100%;
+                border-radius: 5px;
+                border-width: 1px;
+                border-color: white;
+                margin: 1em 0em;
+                height: 3em;
+                font-size: 1.2em;
+            }
+
+
         </style>
 
         <nav class="navbar navbar-dark navbar-expand-lg w-100 z-3 fixed-top">
@@ -63,18 +79,58 @@
                 </li>
                 </ul>
                 <form class="d-flex" role="search">
-                <div class="input-group me-2 gap-2">
+                <!-- <div class="input-group me-2 gap-2">
                     <input type="search" class="form-control" id="txtSearch" name="txtSearch" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-light" type="button" id="btnSearch" name="btnSearch">Search</button>
                     <button class="btn btn-outline-light" type="button" id="btnClear" name="btnClear">Clear</button>
-                </div>
+                </div> -->
                 </form>
             </div>
             </div>
         </nav>
     </head>
     <body>
-          <!-- TODO -->
+        <div class="row h-100">
+            <div class="col-lg-1">
+                <div class="d-none d-lg-block" style="position:fixed; bottom:10%;">
+                    <div class="d-flex flex-lg-column ms-lg-5 text-light fs-1">
+                        <i class="bi-twitter"></i>
+                        <i class="bi-facebook"></i>
+                        <i class="bi-instagram"></i>
+                        <i class="bi-youtube"></i>
+                    </div>
+                </div>
+                <div class="d-block d-lg-none" style="margin-top:80px">
+                    <div class="d-flex justify-content-evenly text-light fs-1">
+                        <i class="bi-twitter"></i>
+                        <i class="bi-facebook"></i>
+                        <i class="bi-instagram"></i>
+                        <i class="bi-youtube"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4 px-5 text-light mb-4">
+                <div style="top:calc(100%/3);position:relative">
+                    <div>
+                        <h1 class="mb-lg-4" style="font-size: 65px; font-weight: bolder;">CONTACT US</h1>
+                        <a class="text-light ms-2 mt-5" href="#" style="text-decoration: none;">Get in touch</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 my-auto">
+                <div class="w-100 me-4 contact_us_form">
+                    <form>
+                        <label for="txtName">Name</label>
+                        <input type="text" id="txtName" name="txtName" placeholder="Enter your name">
+                        <label for="txtEmail">Email</label>
+                        <input type="email" id="txtEmail" name="txtEmail" placeholder="Enter your email">
+                        <label for="txtMessage">Message</label>
+                        <input type="text" id="txtMessage" name="txtMessage" placeholder="Place your message here..."></label>
+                    </form>
+                </div>
+            </div>
+        </div>
     </body>
-    <script src="./travel_recommendation.js"></script>
+    <!-- <script src="./travel_recommendation.js"></script> -->
 </html>
